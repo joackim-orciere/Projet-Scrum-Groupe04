@@ -56,6 +56,46 @@ def getAbstract(text):
             return a;
     return "FAILED"
 
+def getAbstract2(text):
+    paragraphe=text.split("\n\n")
+    a=""
+    position1=0
+    position2=0
+    for m in range(0,len(paragraphe)):
+        if('Abstract' in paragraphe[m]):
+            position1=m
+
+        if('Introduction' in paragraphe[m]):
+            position2=m
+
+
+    if(position1!=0 and position2!=0):
+        for k in range(position1+1,position2):
+            a+=paragraphe[k]
+        return a
+
+    if(position1!=0 and position2==0):
+        i=position1
+        i=i+1
+        a=""
+        a+=paragraphe[i]
+        while(len(paragraphe[i+1])>80):
+          i=i+1
+          a+=paragraphe[i]
+        return a;
+
+    if(position1==0 and position2!=0):
+        i=position2
+        j=i
+        i=i-1
+        a=""
+        while(len(paragraphe[i-1])>80):
+          i=i-1
+        for k in range(i,j):
+          a+=paragraphe[k]
+        return(a);
+    return "FAILED TO RETREIVE ABSTRACT"
+
 
 if( len(sys.argv) <= 1 ):
     print("/!\\ Usage: $./parse directory")
@@ -74,19 +114,25 @@ if( dirpath[-1:] != '/' ):
 pdf_files = glob.glob( dirpath + '*' );
 
 plainpath = dirpath + 'plainTexts'
+abstractpath = dirpath + 'abstractTexts'
 
 if( not os.path.isdir( plainpath )):
     os.mkdir( plainpath );
+if( not os.path.isdir( abstractpath )):
+    os.mkdir( abstractpath );
 
 for pdf_file in pdf_files :
     if( os.path.splitext( pdf_file )[1] != '.pdf' ): # skip files that not pdf
         continue
 
     target = plainpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt' 
+    abstractTarget = abstractpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt' 
+
 
     filename = os.path.splitext(os.path.basename( pdf_file ))[0]
 
     os.system( 'pdftotext -f 1 -l 1 ' + pdf_file + ' ' + target )
+
 
     file = open( target, 'r' );
 
@@ -98,13 +144,12 @@ for pdf_file in pdf_files :
 
     file.close()
 
-    file = open( target, 'w')
+    file = open( abstractTarget, 'w')
     file.write( filename  )
     file.write( "\n---------\n" )
     file.write( title  )
     file.write( "\n---------\n" )
     file.write( abstract  )
-    file.write( "\n---------\n" )
 
     file.close
 
