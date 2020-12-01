@@ -21,17 +21,17 @@ def cleanResume(text):
                 a+=paragraphe[0][k]
             a+=" "
 
-        for i in range(1,z-1):
+        for i in range(1,z):
             a+=paragraphe[i]
             a+=" "
 
 
-        endVar=len(paragraphe[z-1])
-        if('1' in paragraphe[z-1][endVar-1]):
-            for f in range(0,endVar-2):
-                a+=paragraphe[z-1][f]
-        else:
-            a+=paragraphe[z-1]
+        # endVar=len(paragraphe[z-1])
+        # if('1' in paragraphe[z-1][endVar-1]):
+        #     for f in range(0,endVar-2):
+        #         a+=paragraphe[z-1][f]
+        # else:
+        #     a+=paragraphe[z-1]
 
         return a
 
