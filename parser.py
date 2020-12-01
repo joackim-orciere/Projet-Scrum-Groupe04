@@ -78,7 +78,45 @@ if( not exist ):
 if( dirpath[-1:] != '/' ):
     dirpath += '/'
 
-pdf_files = glob.glob( dirpath + '*' );
+pdf_files = glob.glob( dirpath + '*.pdf' );
+
+# Select files from directory
+promptedFiles = []  # liste des fichier contenues dans le dossier passé en argument
+
+print("Veuillez choisir les fichiers à transcrire: \n")
+for i, file in enumerate( pdf_files ) :
+    filename = os.path.basename( file )
+
+    print( i+1, ' \t', filename )
+    promptedFiles.append( [i+1, file] )
+
+s = input("-> ").split()
+
+selected = [] # liste des index selectionnés
+
+# verifications des inputs
+for i, item in enumerate( s ):
+    try:
+        tmp = int( item )
+        if( tmp > len( pdf_files )):
+            print("l'index '" + item + "' ne correspond à aucun index")
+        else:
+            selected.append( tmp )
+    except:
+        print("la chaîne '" + item + "' ne correspond à aucun index")
+
+print( selected )
+
+if( len( selected ) <= 0 ):
+    print("Aucun index valide rentré, termination du programme.")
+    exit()
+    
+selectedFiles = [] # list des fichiers selectionnés
+
+for i, file in enumerate( promptedFiles ):
+    if( file[0] in selected and file[1] not in selectedFiles ):
+        selectedFiles.append( file[1] )
+
 
 plainpath = dirpath + 'plainTexts'
 abstractpath = dirpath + 'abstractTexts'
@@ -90,7 +128,7 @@ if( not os.path.isdir( abstractpath )):
 
 
 
-for pdf_file in pdf_files :
+for pdf_file in selectedFiles :
     if( os.path.splitext( pdf_file )[1] != '.pdf' ): # skip files that not pdf
         continue
 
@@ -115,28 +153,28 @@ for pdf_file in pdf_files :
     file = open( abstractTarget, 'w')
 
     if( xml == True ):
-        file.write( '<article>' )
-        file.write( '\t<preamble>' )
-        file.write( filename  )
-        file.write( '\t</preamble>\n' )
-        file.write( '\t<titre>' )
-        file.write( title  )
-        file.write( '\t</titre>\n' )
-        file.write( '\t<auteur>' )
-        file.write( 'Jean' )    # not done yet
-        file.write( '\t</auteur>\n' )
-        file.write( '\t<abstract>' )
-        file.write( abstract  )
-        file.write( '\t</abstract>\n' )
-        file.write( '\t<biblio>' )
-        file.write( references  )
-        file.write( '\t</biblio>\n' )
-        file.write( '</article>' )
+        file.write('<article>')
+        file.write('\t<preamble>')
+        file.write(filename + '\n')
+        file.write('\t</preamble>\n')
+        file.write('\t<titre>')
+        file.write(title + '\n')
+        file.write('\t</titre>\n')
+        file.write('\t<auteur>')
+        file.write('')    # not done yet
+        file.write('\t</auteur>\n')
+        file.write('\t<abstract>')
+        file.write(abstract + '\n')
+        file.write('\t</abstract>\n')
+        file.write('\t<biblio>')
+        file.write(references + '\n')
+        file.write('\t</biblio>\n')
+        file.write('</article>')
 
     else:
-        file.write( filename  )
-        file.write( title  )
-        file.write( abstract  )
-        file.write( references  )
+        file.write(filename + '\n')
+        file.write(title + '\n')
+        file.write(abstract + '\n')
+        file.write(references + '\n')
 
     file.close
