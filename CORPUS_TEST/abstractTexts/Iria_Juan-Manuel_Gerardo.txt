@@ -12,4 +12,57 @@ procedure, the inter-annotator agreement,
 and other related aspects. Moreover, we
 show the interface that we have developed
 to carry out searches over the corpus’
-annotated texts
+annotated texts.1 
+---------
+Workshop on Linguistically Interpreted Corpora
+(LINC-03).
+Magdalena Romera. 2004. Discourse Functional Units:
+The Expression of Coherence Relations in Spoken
+Spanish. Munich: LINCOM.
+Thiago Alexandre Salgueiro Pardo, and Lucia Helena
+Machado Rino. 2001. A summary planner based on a
+three-level discourse model. In Proceedings of
+Natural Language Processing Pacific Rim
+Symposium. 533-538.
+Thiago Alexandre Salgueiro Pardo, Maria das Graças
+Volpe Nunes, and Lucia Helena Machado Rino.
+2008. DiZer: An Automatic Discourse Analyzer for
+Brazilian Portuguese. Lecture Notes in Artificial
+Intelligence, 3171:224-234.
+Thiago Alexandre Salgueiro Pardo, and Eloize Rossi
+Marques Seno. 2005. Rhetalho: um corpus de
+referência anotado retoricamente. In Anais do V
+Encontro de Corpora. São Carlos-SP, Brasil.
+Gerardo Sierra. 2008. Diseño de corpus textuales para
+fines lingüísticos. In Proceedings of the IX Encuentro
+Internacional de Lingüística en el Noroeste 2. 445462.
+Manfred Stede. 2004. The Potsdam commentary corpus.
+In Proceedings of the Workshop on Discourse
+Annotation, 42nd Meeting of the Association for
+Computational Linguistics.
+Maite Taboada. 2004. Building Coherence and
+Cohesion: Task-Oriented Dialogue in English and
+Spanish. Amsterdam/Philadelphia: John Benjamins.
+Maite Taboada, and Jan Renkema. 2008. Discourse
+Relations Reference Corpus [Corpus]. Simon Fraser
+University
+and
+Tilburg
+University.
+http://www.sfu.ca/rst/06tools/discourse_relations_cor
+pus.html.
+Maite Taboada, and William C. Mann. 2006a.
+Rhetorical Structure Theory: Looking Back and
+Moving Ahead. Discourse Studies, 8(3):423-459.
+Maite Taboada, and William C. Mann. 2006b.
+Applications of Rhetorical Structure Theory.
+Discourse Studies, 8(4):567-588.
+Milan Tofiloski, Julian Brooke, and Maite Taboada.
+2009. A Syntactic and Lexical-Based Discourse
+Segmenter. In Proceedings of the 47th Annual
+Meeting of the Association for Computational
+Linguistics.
+Hai Zhao, Yan Song, and Chunyu Kit. 2010. How Large
+a Corpus Do We Need: Statistical Method Versus
+Rule-based Method. In Proceedings of the Seventh10conference on International Language Resources and
+Evaluation (LREC'10).

@@ -34,4 +34,14 @@ thanks to a criterion combining query relevance and dissimilarity with already r
 documents (history). As the amount of
 data in history increases, non-redundancy
 is prioritized over query-relevance. We
-show that S MMR achieves promising results on the DUC 2007 update corpus
+show that S MMR achieves promising results on the DUC 2007 update corpus.1 
+---------
+ReferencesYe, S., L. Qiu, T.S. Chua, and M.Y. Kan. 2005. NUS
+at DUC 2005: Understanding documents via concept links. In Document Understanding Conference
+(DUC).Boudin, F. and J.M. Torres-Moreno. 2007. A Cosine Maximization-Minimization approach for UserOriented Multi-Document Update Summarization.
+In Recent Advances in Natural Language Processing
+(RANLP), pages 81–87.
+Carbonell, J. and J. Goldstein. 1998. The use of MMR,
+diversity-based reranking for reordering documents
+and producing summaries. In 21st annual international ACM SIGIR conference on Research and development in information retrieval, pages 335–336.
+ACM Press New York, NY, USA.26

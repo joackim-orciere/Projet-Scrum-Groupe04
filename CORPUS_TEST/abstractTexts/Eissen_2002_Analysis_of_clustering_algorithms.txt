@@ -8,4 +8,102 @@ This paper presents results of a comprehensive analysis of clustering algorithms
 exemplar-based, hierarchical, and density-based clustering algorithms. In particular, we contrast ideal and real clustering settings and present runtime results that
 are based on efficient implementations of the investigated algorithms.
 Key words: Document Categorization, Clustering, Clustering Quality
-Measures, Information Retrieval
+Measures, Information Retrieval 
+---------
+
+1. Thomas Bailey and John Cowles. Cluster Definition by the Optimization of
+Simple Measures. IEEE Transactions on Pattern Analysis and Machine
+Intelligence, September 1983.
+2. J. C. Bezdek, W. Q. Li, Y. Attikiouzel, and M. Windham. A Geometric Approach
+to Cluster Validity for Normal Mixtures. Soft Computing 1, September 1997.
+3. J. C. Bezdek and N. R. Pal. Cluster Validation with Generalized Dunn’s Indices.
+In N. Kasabov and G. Coghill, editors, Proceedings of the 2nd international
+two-stream conference on ANNES, pages 190–193, Piscataway, NJ, 1995. IEEE
+Press.
+4. Simon Dennis, Peter Bruza, and Robert McArthur. Web searching: A
+process-oriented experimental study of three interactive search paradigms.
+JASIST, 53(2):120–133, 2002.
+5. M. Ester, H.-P. Kriegel, J. Sander, and X. Xu. A Density-Based Algorithm for
+Discovering Clusters in Large Spatial Databases with Noise. In Proceedings of the
+2nd International Conference on Knowledge Discovery and Data Mining
+(KDD96), 1996.
+6. K. Florek, J. Lukaszewiez, J. Perkal, H. Steinhaus, and S. Zubrzchi. Sur la liason
+et la division des points d’un ensemble fini. Colloquium Methematicum, 2, 1951.
+7. S.C. Johnson. Hierarchical clustering schemes. Psychometrika, 32, 1967.
+8. G. Karypis, E.-H. Han, and V. Kumar. Chameleon: A hierarchical clustering
+algorithm using dynamic modeling. Technical Report Paper No. 432, University
+of Minnesota, Minneapolis, 1999.
+9. Leonard Kaufman and Peter J. Rousseuw. Finding Groups in Data. Wiley, 1990.
+10. T. Kohonen. Self Organization and Assoziative Memory. Springer, 1990.
+11. Gerald Kowalsky. Information Retrieval Systems—Theory and Implementation.
+Kluwer Academic, 1997.
+12. Bjornar Larsen and Chinatsu Aone. Fast and Effective Text Mining Using
+Linear-time Document Clustering. In Proceedings of the KDD-99 Workshop San
+Diego USA, San Diego, CA, USA, 1999.
+13. Thomas Lengauer. Combinatorical algorithms for integrated circuit layout.
+Applicable Theory in Computer Science. Teubner-Wiley, 1990.
+14. David D. Lewis. Reuters-21578 Text Categorization Test Collection.
+http://www.research.att.com/∼lewis, 1994.
+15. J. B. MacQueen. Some Methods for Classification and Analysis of Multivariate
+Observations. In Proceedings of the Fifth Berkeley Symposium on Mathematical
+Statistics and Probability, pages 281–297, 1967.
+16. M.F. Porter. An algorithm for suffix stripping. Program, 14(3):130–137, 1980.
+17. C. J. van Rijsbergen. Information Retrieval. Buttersworth, London, 1979.
+18. Tom Roxborough and Arunabha. Graph Clustering using Multiway Ratio Cut. In
+Stephen North, editor, Graph Drawing, Lecture Notes in Computer Science,
+Springer, 1996.References
+1. Thomas Bailey and John Cowles. Cluster Definition by the Optimization of
+Simple Measures. IEEE Transactions on Pattern Analysis and Machine
+Intelligence, September 1983.
+2. J. C. Bezdek, W. Q. Li, Y. Attikiouzel, and M. Windham. A Geometric Approach
+to Cluster Validity for Normal Mixtures. Soft Computing 1, September 1997.
+3. J. C. Bezdek and N. R. Pal. Cluster Validation with Generalized Dunn’s Indices.
+In N. Kasabov and G. Coghill, editors, Proceedings of the 2nd international
+two-stream conference on ANNES, pages 190–193, Piscataway, NJ, 1995. IEEE
+Press.
+4. Simon Dennis, Peter Bruza, and Robert McArthur. Web searching: A
+process-oriented experimental study of three interactive search paradigms.
+JASIST, 53(2):120–133, 2002.
+5. M. Ester, H.-P. Kriegel, J. Sander, and X. Xu. A Density-Based Algorithm for
+Discovering Clusters in Large Spatial Databases with Noise. In Proceedings of the
+2nd International Conference on Knowledge Discovery and Data Mining
+(KDD96), 1996.
+6. K. Florek, J. Lukaszewiez, J. Perkal, H. Steinhaus, and S. Zubrzchi. Sur la liason
+et la division des points d’un ensemble fini. Colloquium Methematicum, 2, 1951.
+7. S.C. Johnson. Hierarchical clustering schemes. Psychometrika, 32, 1967.
+8. G. Karypis, E.-H. Han, and V. Kumar. Chameleon: A hierarchical clustering
+algorithm using dynamic modeling. Technical Report Paper No. 432, University
+of Minnesota, Minneapolis, 1999.
+9. Leonard Kaufman and Peter J. Rousseuw. Finding Groups in Data. Wiley, 1990.
+10. T. Kohonen. Self Organization and Assoziative Memory. Springer, 1990.
+11. Gerald Kowalsky. Information Retrieval Systems—Theory and Implementation.
+Kluwer Academic, 1997.
+12. Bjornar Larsen and Chinatsu Aone. Fast and Effective Text Mining Using
+Linear-time Document Clustering. In Proceedings of the KDD-99 Workshop San
+Diego USA, San Diego, CA, USA, 1999.
+13. Thomas Lengauer. Combinatorical algorithms for integrated circuit layout.
+Applicable Theory in Computer Science. Teubner-Wiley, 1990.
+14. David D. Lewis. Reuters-21578 Text Categorization Test Collection.
+http://www.research.att.com/∼lewis, 1994.
+15. J. B. MacQueen. Some Methods for Classification and Analysis of Multivariate
+Observations. In Proceedings of the Fifth Berkeley Symposium on Mathematical
+Statistics and Probability, pages 281–297, 1967.
+16. M.F. Porter. An algorithm for suffix stripping. Program, 14(3):130–137, 1980.
+17. C. J. van Rijsbergen. Information Retrieval. Buttersworth, London, 1979.
+18. Tom Roxborough and Arunabha. Graph Clustering using Multiway Ratio Cut. In
+Stephen North, editor, Graph Drawing, Lecture Notes in Computer Science,
+Springer, 1996.178Meyer zu Eissen and Stein19. Reinhard Sablowski and Arne Frick. Automatic Graph Clustering. In Stephan
+North, editor, Graph Drawing, Lecture Notes in Computer Science, Springer,
+1996.
+20. G. Salton. Automatic Text Processing: The Transformation, Analysis and
+Retrieval of Information by Computer. Addison-Wesley, 1988.
+21. P.H.A. Sneath. The application of computers to taxonomy. J. Gen. Microbiol., 17,
+1957.
+22. Benno Stein and Oliver Niggemann. 25. Workshop on Graph Theory, chapter On
+the Nature of Structure and its Identification. Lecture Notes on Computer Science,
+LNCS. Springer, Ascona, Italy, July 1999.
+23. Zhenyu Wu and Richard Leahy. An optimal graph theoretic approach to data
+clustering: Theory and its application to image segmentation. IEEE Transactions
+on Pattern Analysis and Machine Intelligence, November 1993.
+24. J. T. Yan and P. Y. Hsiao. A fuzzy clustering algorithm for graph bisection.
+Information Processing Letters, 52, 1994.
