@@ -1,0 +1,79 @@
+AUTOMATIC LINGUISTIC SEGMENTATION
+OF CONVERSATIONAL SPEECH
+Andreas Stolcke
+
+Elizabeth Shriberg
+
+Speech Technology and Research Laboratory
+SRI International, Menlo Park, CA 94025
+stolcke@speech.sri.com ees@speech.sri.com
+
+ABSTRACT
+As speech recognition moves toward more unconstrained domains
+such as conversational speech, we encounter a need to be able to
+segment (or resegment) waveforms and recognizer output into linguistically meaningful units, such a sentences. Toward this end,
+we present a simple automatic segmenter of transcripts based on
+N-gram language modeling. We also study the relevance of several word-level features for segmentation performance. Using only
+word-level information, we achieve 85% recall and 70% precision
+on linguistic boundary detection.
+
+1.
+
+INTRODUCTION
+
+Today’s large-vocabulary speech recognizers typically prefer to process a few tens of seconds of speech at a time, to keep the time and
+memory demands of the decoder within bounds. For longer inputs,
+the waveform is usually presegmented into shorter pieces based on
+simple acoustic criteria, such as nonspeech intervals (e.g., pauses)
+and turn boundaries (when several speakers are involved). We refer
+to such segmentations as acoustic segmentations.
+Acoustic segmentations generally do not reflect the linguistic structure of utterances. They may fragment sentences or semantic units,
+or group together spans of unrelated units. We examine several reasons why such behavior is undesirable, and propose that linguistic
+segmentations be used instead. This requires algorithms for automatically finding linguistic units. In this paper we report on first
+results from our ongoing efforts toward such an automatic linguistic segmentation. In all further discussion, unless otherwise noted,
+the terms ‘segment,’ ‘segmentation,’ etc. will refer to linguistic segmentations.
+
+2. THE IMPORTANCE OF LINGUISTIC
+SEGMENTATION
+Acoustic segmentations are inadequate in cases where the output
+of a speech recognizer is to serve as input for further processing
+based on syntactically or semantically coherent units. This includes
+most natural language (NL) parsers or NL understanding or translation systems. For such systems, the fragmented recognition output
+would have to be put back together and large spans of unrelated
+material would need to be resegmented into linguistic units.
+Automatic detection of linguistic segments could also improve the
+user interface of many speech systems. A spoken language system
+
+could use the knowledge incorporated in an automatic segmenter
+to help end-point a user’s speech input. A speech indexing and retrieval system (such as for transcribed broadcast audio) could process its data in more meaningful units if the locations of linguistic
+segment boundaries were known.
+Our main motivation for the work reported here comes from speech
+language modeling. Experiments at the 1995 Johns Hopkins Language Modeling Workshop showed that the quality of a language
+model (LM) can be improved if both training and test data are segmented linguistically, rather than acoustically [8]. We showed in
+[10] and [9] that proper modeling of filled pauses requires knowledge of linguistic segment boundaries. We found for example that
+segment-internal filled pauses condition the following words quite
+differently from segment-initial filled pauses. Finally, recent efforts
+in language modeling for conversational speech, such as [8], attempt
+to capitalize on the internal structure of utterances and turns. Such
+models are formulated in terms of linguistic units and therefore require linguistic segmentations to be applicable.
+
+3.
+
+METHOD
+
+Our main goal for this work was to examine to what extent various
+kinds of lexical (word-based) information were useful for automatic
+linguistic segmentation. This precluded a study based on the output of existing speech recognition systems, which currently achieve
+about 40-50% word error rate on the type of data used in our experiments. At such high error rates, the analysis of any segmentation
+algorithm and the features it uses would likely be confounded by
+the unreliable nature of the input data. We therefore chose to eliminate the problem of inaccurate speech recognition and tested our algorithms on hand-transcribed word-level transcripts of spontaneous
+speech from the Switchboard corpus [4]. An additional benefit of
+this approach is that the models employed by the segmentation algorithms can also be directly used as language models for speech
+recognizers for the same type of data, an application we are pursuing as well.
+The segmentation approaches we investigated all fell within the following framework. We first trained a statistical language model
+of the N-gram variety to model the distribution of both words and
+segment boundaries. (For this purpose, segment boundaries were
+represented as special tokens <s> within the text.) The segmentation information was removed from the test data, and the language
+model was used to hypothesize the most probable locations of seg-
+
+

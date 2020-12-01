@@ -1,0 +1,11 @@
+Eissen_2002_Analysis_of_clustering_algorithms
+---------
+c 
+---------
+ Automatic document categorization plays a key role in the development of future interfaces for Web-based search. Clustering algorithms are considered as a technology that is capable of mastering this “ad-hoc” categorization
+task.
+This paper presents results of a comprehensive analysis of clustering algorithms in connection with document categorization. The contributions relate to
+exemplar-based, hierarchical, and density-based clustering algorithms. In particular, we contrast ideal and real clustering settings and present runtime results that
+are based on efficient implementations of the investigated algorithms.
+Key words: Document Categorization, Clustering, Clustering Quality
+Measures, Information Retrieval

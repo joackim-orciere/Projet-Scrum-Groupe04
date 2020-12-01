@@ -22,79 +22,88 @@ def getTitle( txt ):
         ret += txt[1] + " "
 
     return ret
+def cleanResume(text):
 
-def getAbstract(text):
-    paragraphe=text.split("\n\n")
-    if('Abstract' in paragraphe and 'Introduction' in paragraphe):##condition ideale (on a introduction et abstract)
-        i = paragraphe.index("Abstract")
-        j = paragraphe.index("Introduction")
-        a=""
-        for k in range(i+1,j):
-            a+=paragraphe[k]
+    a=""
+    paragraphe=text.split(" ")
+    z=len(paragraphe)
+    save=""
+    for t in range(0,z):
+        if('Introduction' in paragraphe[t] or 'introduction' in paragraphe[t] or 'INTRODUCTION' in paragraphe[t]):
+            for r in range(0,t):
+                save+=paragraphe[r]
+                save+=" "
+            paragraphe=""
+            paragraphe+=save
+            paragraphe=save.split(" ")
+            z=len(paragraphe)
+            break
+
+    if('Abstract' in paragraphe[0] or 'abstract' in paragraphe[0] or 'ABSTRACT' in paragraphe[0]):
+        if(len(paragraphe[0])>7):
+            for k in range(8,len(paragraphe[0])):
+                a+=paragraphe[0][k]
+            a+=" "
+
+        for i in range(1,z-1):
+            a+=paragraphe[i]
+            a+=" "
+
+
+        endVar=len(paragraphe[z-1])
+        if('1' in paragraphe[z-1][endVar-1]):
+            for f in range(0,endVar-2):
+                a+=paragraphe[z-1][f]
+        else:
+            a+=paragraphe[z-1]
+
         return a
 
-    else:##si jamais on a uniquement introduction ou abstract
-        if('Introduction' in paragraphe):
-            i = paragraphe.index("Introduction")
-            j=i
-            i=i-1
-            a=""
-            while(len(paragraphe[i-1])>80):
-                i=i-1
-            for k in range(i,j):
-                a+=paragraphe[k]
-            return(a);
+    for s in range(0,len(paragraphe)):
+        a+=paragraphe[s]
+        a+=" "
+    return a
 
-        if('Abstract' in paragraphe):
-            i = paragraphe.index("Abstract")
-            i=i+1
-            a=""
-            a+=paragraphe[i]
-            while(len(paragraphe[i+1])>80):
-                i=i+1
-                a+=paragraphe[i]
-            return a;
-    return "FAILED"
-
-def getAbstract2(text):
+def getAbstract(text):
     paragraphe=text.split("\n\n")
     a=""
     position1=0
     position2=0
     for m in range(0,len(paragraphe)):
-        if('Abstract' in paragraphe[m]):
+
+        if('Abstract' in paragraphe[m] or 'abstract' in paragraphe[m] or 'ABSTRACT' in paragraphe[m]):
             position1=m
 
-        if('Introduction' in paragraphe[m]):
+
+        if('Introduction' in paragraphe[m] or 'introduction' in paragraphe[m] or 'INTRODUCTION' in paragraphe[m]):
             position2=m
 
 
+
     if(position1!=0 and position2!=0):
-        for k in range(position1+1,position2):
+        for k in range(position1,position2):
             a+=paragraphe[k]
-        return a
+        return(cleanResume(a))
 
     if(position1!=0 and position2==0):
         i=position1
-        i=i+1
         a=""
         a+=paragraphe[i]
-        while(len(paragraphe[i+1])>80):
-          i=i+1
-          a+=paragraphe[i]
-        return a;
+        #while(len(paragraphe[i+1])>150):
+          #i=i+1
+          #a+=paragraphe[i]
+        return(cleanResume(a))
 
     if(position1==0 and position2!=0):
         i=position2
         j=i
-        i=i-1
         a=""
-        while(len(paragraphe[i-1])>80):
+        while(len(paragraphe[i-1])>300):
           i=i-1
-        for k in range(i,j):
+        for k in range(i,j+1):
           a+=paragraphe[k]
-        return(a);
-    return "FAILED TO RETREIVE ABSTRACT"
+        return(cleanResume(a))
+    return "FAILED TO RETREIVE ABSTRACT OR INTRODUCTION"
 
 
 if( len(sys.argv) <= 1 ):
@@ -125,8 +134,8 @@ for pdf_file in pdf_files :
     if( os.path.splitext( pdf_file )[1] != '.pdf' ): # skip files that not pdf
         continue
 
-    target = plainpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt' 
-    abstractTarget = abstractpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt' 
+    target = plainpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt'
+    abstractTarget = abstractpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt'
 
 
     filename = os.path.splitext(os.path.basename( pdf_file ))[0]
@@ -152,5 +161,3 @@ for pdf_file in pdf_files :
     file.write( abstract  )
 
     file.close
-
-
