@@ -27,11 +27,12 @@ def cleanResume(text):
 
 
         # endVar=len(paragraphe[z-1])
+        # print(endVar)
         # if('1' in paragraphe[z-1][endVar-1]):
         #     for f in range(0,endVar-2):
-        #         a+=paragraphe[z-1][f]
+        #          a+=paragraphe[z-1][f]
         # else:
-        #     a+=paragraphe[z-1]
+        #      a+=paragraphe[z-1]"
 
         return a
 
@@ -45,18 +46,25 @@ def getAbstract(text):
     a=""
     position1=0
     position2=0
+    test1=True
+    test2=True
     for m in range(0,len(paragraphe)):
 
-        if('Abstract' in paragraphe[m] or 'abstract' in paragraphe[m] or 'ABSTRACT' in paragraphe[m]):
+        if(('Abstract' in paragraphe[m] or 'abstract' in paragraphe[m] or 'ABSTRACT' in paragraphe[m]) and (test1==True)):
             position1=m
+            test1=False
 
 
-        if('Introduction' in paragraphe[m] or 'introduction' in paragraphe[m] or 'INTRODUCTION' in paragraphe[m]):
+
+        if(('Introduction' in paragraphe[m] or 'introduction' in paragraphe[m] or 'INTRODUCTION' in paragraphe[m]) and (test2==True)):
             position2=m
+            test2=False
+
 
 
 
     if(position1!=0 and position2!=0):
+
         for k in range(position1,position2):
             a+=paragraphe[k]
         return(cleanResume(a))
