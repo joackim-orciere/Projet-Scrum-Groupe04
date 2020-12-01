@@ -5,6 +5,8 @@ import sys
 import os
 import re
 
+from getReferences import *
+
 def testLine( line ):
     return re.search( ':|\(|\)|,', line )
 
@@ -23,7 +25,7 @@ def getTitle( txt ):
 
     return ret
 
-def getAbstract(text):
+def getAbstractOld(text):
     paragraphe=text.split("\n\n")
     if('Abstract' in paragraphe and 'Introduction' in paragraphe):##condition ideale (on a introduction et abstract)
         i = paragraphe.index("Abstract")
@@ -56,7 +58,7 @@ def getAbstract(text):
             return a;
     return "FAILED"
 
-def getAbstract2(text):
+def getAbstract(text):
     paragraphe=text.split("\n\n")
     a=""
     position1=0
@@ -131,25 +133,30 @@ for pdf_file in pdf_files :
 
     filename = os.path.splitext(os.path.basename( pdf_file ))[0]
 
-    os.system( 'pdftotext -f 1 -l 1 ' + pdf_file + ' ' + target )
-
+    os.system( 'pdftotext ' + pdf_file + ' ' + target )
 
     file = open( target, 'r' );
-
     string = file.read()
-
     title = getTitle( string )
 
+    abstractOld = getAbstractOld( string )
     abstract = getAbstract( string )
+
+    references = getReferences( string )
 
     file.close()
 
     file = open( abstractTarget, 'w')
+    file.write( "\n----[filename]----\n" )
     file.write( filename  )
-    file.write( "\n---------\n" )
+    file.write( "\n----[title]----\n" )
     file.write( title  )
-    file.write( "\n---------\n" )
-    file.write( abstract  )
+    file.write( "\n----[abstract]---\n" )
+    file.write( abstractOld  )
+    # file.write( "\n----[]---\n" )
+    # file.write( abstract  )
+    file.write( "\n----[references]---\n" )
+    file.write( references  )
 
     file.close
 
