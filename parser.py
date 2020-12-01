@@ -5,6 +5,9 @@ import sys
 import os
 import re
 
+from abstract import *
+from references import *
+
 def testLine( line ):
     return re.search( ':|\(|\)|,', line )
 
@@ -48,6 +51,8 @@ if( not os.path.isdir( plainpath )):
 if( not os.path.isdir( abstractpath )):
     os.mkdir( abstractpath );
 
+
+
 for pdf_file in pdf_files :
     if( os.path.splitext( pdf_file )[1] != '.pdf' ): # skip files that not pdf
         continue
@@ -58,7 +63,7 @@ for pdf_file in pdf_files :
 
     filename = os.path.splitext(os.path.basename( pdf_file ))[0]
 
-    os.system( 'pdftotext -f 1 -l 1 ' + pdf_file + ' ' + target )
+    os.system( 'pdftotext ' + pdf_file + ' ' + target )
 
 
     file = open( target, 'r' );
@@ -66,8 +71,8 @@ for pdf_file in pdf_files :
     string = file.read()
 
     title = getTitle( string )
-
     abstract = getAbstract( string )
+    references = getReferences( string )
 
     file.close()
 
@@ -77,5 +82,7 @@ for pdf_file in pdf_files :
     file.write( title  )
     file.write( "\n---------\n" )
     file.write( abstract  )
+    file.write( "\n---------\n" )
+    file.write( references  )
 
     file.close
