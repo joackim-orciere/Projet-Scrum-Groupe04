@@ -5,13 +5,21 @@ import sys
 import os
 import re
 
-from getReferences import *
+
+from abstract import *
+from references import *
+
+def wrongUsage():
+    print("/!\\ Usage: $./parse -o directory")
+    print("options: \n\t-t \t# plain text output\n\t-x \t# xml output")
+    exit()
 
 def testLine( line ):
     return re.search( ':|\(|\)|,', line )
 
 def getTitle( txt ):
 
+    """
     txt = txt.split("\n\n")
     # print( re.search(':|(|)|,|', txt[0] ))
     txt = txt[0].split("\n")
@@ -24,86 +32,43 @@ def getTitle( txt ):
         ret += txt[1] + " "
 
     return ret
+    """
+    paragraphe=txt.split("\n\n")
 
-def getAbstractOld(text):
-    paragraphe=text.split("\n\n")
-    if('Abstract' in paragraphe and 'Introduction' in paragraphe):##condition ideale (on a introduction et abstract)
-        i = paragraphe.index("Abstract")
-        j = paragraphe.index("Introduction")
-        a=""
-        for k in range(i+1,j):
-            a+=paragraphe[k]
-        return a
+    if(paragraphe[0][0].islower()):#commence majuscule
+        phrase=paragraphe[1].split("\n")
+    else:
+        phrase=paragraphe[0].split("\n")
 
-    else:##si jamais on a uniquement introduction ou abstract
-        if('Introduction' in paragraphe):
-            i = paragraphe.index("Introduction")
-            j=i
-            i=i-1
-            a=""
-            while(len(paragraphe[i-1])>80):
-                i=i-1
-            for k in range(i,j):
-                a+=paragraphe[k]
-            return(a);
 
-        if('Abstract' in paragraphe):
-            i = paragraphe.index("Abstract")
-            i=i+1
-            a=""
-            a+=paragraphe[i]
-            while(len(paragraphe[i+1])>80):
-                i=i+1
-                a+=paragraphe[i]
-            return a;
-    return "FAILED"
-
-def getAbstract(text):
-    paragraphe=text.split("\n\n")
+    cmpteur= 0
     a=""
-    position1=0
-    position2=0
-    for m in range(0,len(paragraphe)):
-        if('Abstract' in paragraphe[m]):
-            position1=m
+    postitre = 0
 
-        if('Introduction' in paragraphe[m]):
-            position2=m
+    for i in range(0,len(phrase)):
 
-
-    if(position1!=0 and position2!=0):
-        for k in range(position1+1,position2):
-            a+=paragraphe[k]
-        return a
-
-    if(position1!=0 and position2==0):
-        i=position1
-        i=i+1
-        a=""
-        a+=paragraphe[i]
-        while(len(paragraphe[i+1])>80):
-          i=i+1
-          a+=paragraphe[i]
-        return a;
-
-    if(position1==0 and position2!=0):
-        i=position2
-        j=i
-        i=i-1
-        a=""
-        while(len(paragraphe[i-1])>80):
-          i=i-1
-        for k in range(i,j):
-          a+=paragraphe[k]
-        return(a);
-    return "FAILED TO RETREIVE ABSTRACT"
+        if ('/' in phrase[i] or '*' in phrase[i] or '-' in phrase[i]):
+            postitre=i
+        
+    for k in range(0,postitre):
+        a+=phrase[k]
+        a+=" "
+    return a
+         
 
 
-if( len(sys.argv) <= 1 ):
-    print("/!\\ Usage: $./parse directory")
-    exit()
+if( len(sys.argv) <= 2 ):
+    wrongUsage()
 
-dirpath = sys.argv[1]
+xml = False
+
+if( sys.argv[1] != '-x' and sys.argv[1] != '-t' ):
+    wrongUsage();
+else:
+    if( sys.argv[1] == '-x' ):
+        xml = True
+
+dirpath = sys.argv[2]
 
 exist = os.path.isdir( dirpath)
 if( not exist ):
@@ -123,41 +88,55 @@ if( not os.path.isdir( plainpath )):
 if( not os.path.isdir( abstractpath )):
     os.mkdir( abstractpath );
 
+
+
 for pdf_file in pdf_files :
     if( os.path.splitext( pdf_file )[1] != '.pdf' ): # skip files that not pdf
         continue
 
-    target = plainpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt' 
-    abstractTarget = abstractpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt' 
+    target = plainpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt'
+    abstractTarget = abstractpath + '/' + os.path.splitext(os.path.basename( pdf_file ))[0] + '.txt'
 
 
     filename = os.path.splitext(os.path.basename( pdf_file ))[0]
 
     os.system( 'pdftotext ' + pdf_file + ' ' + target )
 
+
     file = open( target, 'r' );
     string = file.read()
     title = getTitle( string )
-
-    abstractOld = getAbstractOld( string )
     abstract = getAbstract( string )
-
     references = getReferences( string )
+
 
     file.close()
 
     file = open( abstractTarget, 'w')
-    file.write( "\n----[filename]----\n" )
-    file.write( filename  )
-    file.write( "\n----[title]----\n" )
-    file.write( title  )
-    file.write( "\n----[abstract]---\n" )
-    file.write( abstractOld  )
-    # file.write( "\n----[]---\n" )
-    # file.write( abstract  )
-    file.write( "\n----[references]---\n" )
-    file.write( references  )
+
+    if( xml == True ):
+        file.write( '<article>' )
+        file.write( '\t<preamble>' )
+        file.write( filename  )
+        file.write( '\t</preamble>\n' )
+        file.write( '\t<titre>' )
+        file.write( title  )
+        file.write( '\t</titre>\n' )
+        file.write( '\t<auteur>' )
+        file.write( 'Jean' )    # not done yet
+        file.write( '\t</auteur>\n' )
+        file.write( '\t<abstract>' )
+        file.write( abstract  )
+        file.write( '\t</abstract>\n' )
+        file.write( '\t<biblio>' )
+        file.write( references  )
+        file.write( '\t</biblio>\n' )
+        file.write( '</article>' )
+
+    else:
+        file.write( filename  )
+        file.write( title  )
+        file.write( abstract  )
+        file.write( references  )
 
     file.close
-
-
