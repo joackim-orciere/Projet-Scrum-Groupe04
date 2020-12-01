@@ -178,3 +178,5 @@ for pdf_file in selectedFiles :
         file.write(references + '\n')
 
     file.close
+
+
