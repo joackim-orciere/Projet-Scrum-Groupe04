@@ -37,28 +37,25 @@ def getTitle( txt ):
 
     return ret
     """
-    paragraphe=txt.split("\n\n")
-
-    if(paragraphe[0][0].islower()):#commence majuscule
-        phrase=paragraphe[1].split("\n")
-    else:
-        phrase=paragraphe[0].split("\n")
-
-
-    cmpteur= 0
-    a=""
-    postitre = 0
-
-    for i in range(0,len(phrase)):
-
-        if ('/' in phrase[i] or '*' in phrase[i] or '-' in phrase[i]):
-            postitre=i
-
-    for k in range(0,postitre):
-        a+=phrase[k]
-        a+=" "
-    return a
-
+    phrase=txt.split("\n")
+    
+    title = str(phrase[0:2])
+    
+    return title
+   
+def getAutor( txt ):
+	
+	phrase=txt.split("\n")
+	
+	for j in range(0, 50):
+    
+        if('Abstract' in phrase[j] or 'ABSTRACT' in phrase[j]):
+            
+			posab=j
+	
+	autor = str(phrase[2:posab])
+	
+	return autor
 
 
 if( len(sys.argv) <= 2 ):
