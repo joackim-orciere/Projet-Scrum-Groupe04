@@ -12,11 +12,14 @@ def findDiscussionParagraph( text ):
 
 
 def getDiscussion(text):
-    if( re.search( 'discussion', text[i], re.IGNORECASE )):
-        x = findDiscussionParagraph(text)
-        y = findReferenceParagraph(text)
+    if( re.search( 'discussion', text, re.IGNORECASE )):
+        string = text
+        text = text.split("\n\n")
 
-        par = text[i].split('discussion', re.IGNORECASE  )
+        x = findDiscussionParagraph(string)
+        y = findReferenceParagraph(string)
+
+        par = text[x].split('discussion', re.IGNORECASE  )
 
         discussion = ''
         if( len(par) > 1 ):
@@ -24,7 +27,7 @@ def getDiscussion(text):
         
         while( x < y ):
             discussion += text[1]
-            i += 1
+            x += 1
 
         return discussion
  

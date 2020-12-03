@@ -173,6 +173,10 @@ for pdf_file in selectedFiles :
         file.write('\t</introduction>\n')
 
         file.write('\t<biblio>')
+        file.write(getDiscussion(string) + '\n')
+        file.write('\t</biblio>\n')
+
+        file.write('\t<biblio>')
         file.write(getReferences(string) + '\n')
         file.write('\t</biblio>\n')
 
@@ -183,6 +187,7 @@ for pdf_file in selectedFiles :
         file.write(title + '\n')
         file.write(getAbstract(string) + '\n')
         file.write(getIntroduction(string) + '\n')
+        file.write(getDiscussion(string) + '\n')
         file.write(getReferences(string) + '\n')
 
     file.close
