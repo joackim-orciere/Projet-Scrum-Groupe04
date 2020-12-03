@@ -8,6 +8,7 @@ import re
 
 from abstract import *
 from references import *
+from introduction import *
 
 def wrongUsage():
     print("/!\\ Usage: $./parse -o directory")
@@ -105,7 +106,6 @@ for i, item in enumerate( s ):
     except:
         print("la chaîne '" + item + "' ne correspond à aucun index")
 
-print( selected )
 
 if( len( selected ) <= 0 ):
     print("Aucun index valide rentré, termination du programme.")
@@ -144,38 +144,44 @@ for pdf_file in selectedFiles :
     file = open( target, 'r' );
     string = file.read()
     title = getTitle( string )
-    abstract = getAbstract( string )
-    references = getReferences( string )
-
-
     file.close()
 
     file = open( abstractTarget, 'w')
 
     if( xml == True ):
         file.write('<article>')
+
         file.write('\t<preamble>')
         file.write(filename + '\n')
         file.write('\t</preamble>\n')
+
         file.write('\t<titre>')
         file.write(title + '\n')
         file.write('\t</titre>\n')
+
         file.write('\t<auteur>')
         file.write('')    # not done yet
         file.write('\t</auteur>\n')
+
         file.write('\t<abstract>')
-        file.write(abstract + '\n')
+        file.write(getAbstract(string) + '\n')
         file.write('\t</abstract>\n')
+
+        file.write('\t<introduction>')
+        file.write(getIntroduction(string) + '\n')
+        file.write('\t</introduction>\n')
+
         file.write('\t<biblio>')
-        file.write(references + '\n')
+        file.write(getReferences(string) + '\n')
         file.write('\t</biblio>\n')
+
         file.write('</article>')
 
     else:
         file.write(filename + '\n')
         file.write(title + '\n')
-        file.write(abstract + '\n')
-        file.write(references + '\n')
+        file.write(getAbstract(string) + '\n')
+        file.write(getReferences(string) + '\n')
 
     file.close
 

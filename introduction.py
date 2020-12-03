@@ -15,7 +15,7 @@ def getIntroduction(text):
             test2=False
 
 
-    print(position2)
+    # print(position2)
     for k in range(position1,position2+1):
         if(k==position1):
             part1=paragraphe[k].split(" ")
@@ -32,7 +32,7 @@ def getIntroduction(text):
 
             for f in range(0,len(part2)):
                 if('2.' in part2[f] or 'II' in part2[f]):
-                    print(f)
+                    # print(f)
                     break
             for j in range(0,f+1):
                 a+=part2[j]
