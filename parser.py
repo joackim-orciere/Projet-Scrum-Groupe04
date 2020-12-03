@@ -9,6 +9,7 @@ import re
 from abstract import *
 from references import *
 from introduction import *
+from discussion import *
 
 def wrongUsage():
     print("/!\\ Usage: $./parse -o directory")

@@ -16,7 +16,7 @@ def getDiscussion(text):
         x = findDiscussionParagraph(text)
         y = findReferenceParagraph(text)
 
-       par = text[i].split('discussion', re.IGNORECASE  )
+        par = text[i].split('discussion', re.IGNORECASE  )
 
         discussion = ''
         if( len(par) > 1 ):
