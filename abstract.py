@@ -1,5 +1,4 @@
 def cleanResume(text):
-
     a=""
     paragraphe=text.split(" ")
     z=len(paragraphe)

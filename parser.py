@@ -10,6 +10,7 @@ from abstract import *
 from references import *
 from introduction import *
 from discussion import *
+from corps import *
 
 def wrongUsage():
     print("/!\\ Usage: $./parse -o directory")
@@ -173,6 +174,10 @@ for pdf_file in selectedFiles :
         file.write(getIntroduction(string) + '\n')
         file.write('\t</introduction>\n')
 
+        file.write('\t<corps>')
+        file.write(getCorps(string) + '\n')
+        file.write('\t</corps\n')
+
         file.write('\t<discussion>')
         file.write(getDiscussion(string) + '\n')
         file.write('\t</discussion>\n')
@@ -188,6 +193,7 @@ for pdf_file in selectedFiles :
         file.write(title + '\n\n')
         file.write(getAbstract(string) + '\n\n')
         file.write(getIntroduction(string) + '\n\n')
+        file.write(getCorps(string) + '\n\n')
         file.write(getDiscussion(string) + '\n\n')
         file.write(getReferences(string) + '\n\n')
 
