@@ -21,7 +21,7 @@ def getConclusion(text):
     else:
         position2=positionR
         word1='References'
-        word2='References'
+        word2='REFERENCES'
 
     a=""
     paragraphe=text.split("\n\n")
