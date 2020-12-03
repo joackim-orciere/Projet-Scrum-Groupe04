@@ -22,10 +22,10 @@ def getReferences( text ):
 
     text = text.split("\n\n")
 
-    par = text[i].split('References')
+    par = text[i].split('References', re.IGNORECASE  )
 
     references = '' 
-    if( len( par )) > 1 :
+    if( len( par ) > 1 ):
         references = par[1]
 
     while( i < len( text ) ):
