@@ -50,12 +50,12 @@ def getTitle( txt ):
 
         if ('/' in phrase[i] or '*' in phrase[i] or '-' in phrase[i]):
             postitre=i
-        
+
     for k in range(0,postitre):
         a+=phrase[k]
         a+=" "
     return a
-         
+
 
 
 if( len(sys.argv) <= 2 ):
@@ -110,7 +110,7 @@ for i, item in enumerate( s ):
 if( len( selected ) <= 0 ):
     print("Aucun index valide rentré, termination du programme.")
     exit()
-    
+
 selectedFiles = [] # list des fichiers selectionnés
 
 for i, file in enumerate( promptedFiles ):
@@ -181,8 +181,7 @@ for pdf_file in selectedFiles :
         file.write(filename + '\n')
         file.write(title + '\n')
         file.write(getAbstract(string) + '\n')
+        file.write(getIntroduction(string) + '\n')
         file.write(getReferences(string) + '\n')
 
     file.close
-
-
