@@ -11,6 +11,7 @@ from references import *
 from introduction import *
 from discussion import *
 from corps import *
+from conclusion import *
 
 def wrongUsage():
     print("/!\\ Usage: $./parse -o directory")
@@ -191,10 +192,11 @@ for pdf_file in selectedFiles :
     else:
         file.write(filename + '\n\n')
         file.write(title + '\n\n')
-        file.write(getAbstract(string) + '\n\n')
-        file.write(getIntroduction(string) + '\n\n')
-        file.write(getCorps(string) + '\n\n')
-        file.write(getDiscussion(string) + '\n\n')
-        file.write(getReferences(string) + '\n\n')
+        file.write('-ABSTRACT-\n\n' + getAbstract(string) + '\n\n')
+        file.write('-INTRODUCTION-\n\n' + getIntroduction(string) + '\n\n')
+        file.write('-CORPS-\n\n' + getCorps(string) + '\n\n')
+        file.write('-DISCUSSION-\n\n' + getDiscussion(string) + '\n\n')
+        file.write('-CONCLUSION-\n\n' + getConclusion(string) + '\n\n')
+        file.write('-REFERENCES-\n\n' +getReferences(string) + '\n\n')
 
     file.close

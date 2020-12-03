@@ -7,7 +7,9 @@ def findAknowledgementParagraph( text ):
     while( i >= 0 ):
         if( re.search( 'Acknowledgments', text[i] ) or re.search( 'ACKNOWLEDGMENTS', text[i] ) ):
                 break
-        i += -1 
+        i += -1
+    if( i <= 1 ):
+        return 99999
     return i
 
 def findDiscussionParagraph( text ):
@@ -17,7 +19,7 @@ def findDiscussionParagraph( text ):
     while( i >= 0 ):
         if( re.search( 'Discussion', text[i] ) or re.search( 'DISCUSSION', text[i] ) ):
                 break
-        i += -1 
+        i += -1
     if( i <= 1 ):
         return 99999
     return i
@@ -34,7 +36,7 @@ def getDiscussion(text):
         y = findReferenceParagraph(text)
         z = findAknowledgementParagraph(text)
 
-        y = min( y, z ) 
+        y = min( y, z )
 
         text = text.split("\n\n")
 
@@ -43,18 +45,12 @@ def getDiscussion(text):
         discussion = ''
         if( len(par) > 1 ):
             discussion = par[1]
-        
+
         while( x < y ):
             discussion += text[x]
             x += 1
 
         return discussion
- 
+
     else: # could not find discussion section
         return ''
-  
-
-
-
-
-
