@@ -96,6 +96,7 @@ s = input("-> ").split()
 
 selected = [] # liste des index selectionnés
 
+
 # verifications des inputs
 for i, item in enumerate( s ):
     try:
@@ -172,9 +173,9 @@ for pdf_file in selectedFiles :
         file.write(getIntroduction(string) + '\n')
         file.write('\t</introduction>\n')
 
-        file.write('\t<biblio>')
+        file.write('\t<discussion>')
         file.write(getDiscussion(string) + '\n')
-        file.write('\t</biblio>\n')
+        file.write('\t</discussion>\n')
 
         file.write('\t<biblio>')
         file.write(getReferences(string) + '\n')
