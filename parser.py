@@ -184,11 +184,11 @@ for pdf_file in selectedFiles :
         file.write('</article>')
 
     else:
-        file.write(filename + '\n')
-        file.write(title + '\n')
-        file.write(getAbstract(string) + '\n')
-        file.write(getIntroduction(string) + '\n')
-        file.write(getDiscussion(string) + '\n')
-        file.write(getReferences(string) + '\n')
+        file.write(filename + '\n\n')
+        file.write(title + '\n\n')
+        file.write(getAbstract(string) + '\n\n')
+        file.write(getIntroduction(string) + '\n\n')
+        file.write(getDiscussion(string) + '\n\n')
+        file.write(getReferences(string) + '\n\n')
 
     file.close
