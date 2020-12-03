@@ -11,7 +11,7 @@ def findReferenceParagraph( text ):
 
     i = len( text ) - 1
     while( i >= 0 ):
-        if( re.search( 'reference', text[i], re.IGNORECASE )):
+        if( re.search( 'References', text[i], re.IGNORECASE )):
                 break
         i += -1 
     return i

@@ -9,6 +9,7 @@ import re
 from abstract import *
 from references import *
 from introduction import *
+from discussion import *
 
 def wrongUsage():
     print("/!\\ Usage: $./parse -o directory")
@@ -95,6 +96,7 @@ s = input("-> ").split()
 
 selected = [] # liste des index selectionnés
 
+
 # verifications des inputs
 for i, item in enumerate( s ):
     try:
@@ -171,6 +173,10 @@ for pdf_file in selectedFiles :
         file.write(getIntroduction(string) + '\n')
         file.write('\t</introduction>\n')
 
+        file.write('\t<discussion>')
+        file.write(getDiscussion(string) + '\n')
+        file.write('\t</discussion>\n')
+
         file.write('\t<biblio>')
         file.write(getReferences(string) + '\n')
         file.write('\t</biblio>\n')
@@ -182,6 +188,7 @@ for pdf_file in selectedFiles :
         file.write(title + '\n')
         file.write(getAbstract(string) + '\n')
         file.write(getIntroduction(string) + '\n')
+        file.write(getDiscussion(string) + '\n')
         file.write(getReferences(string) + '\n')
 
     file.close
