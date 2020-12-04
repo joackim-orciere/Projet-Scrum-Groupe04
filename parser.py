@@ -12,17 +12,15 @@ from introduction import *
 from discussion import *
 from corps import *
 from conclusion import *
+from title import *
 
 def wrongUsage():
     print("/!\\ Usage: $./parse -o directory")
     print("options: \n\t-t \t# plain text output\n\t-x \t# xml output")
     exit()
 
-def testLine( line ):
-    return re.search( ':|\(|\)|,', line )
-
+"""
 def getTitle( txt ):
-
 
     phrase=txt.split("\n")
 
@@ -47,9 +45,11 @@ def getAutor( txt ):
     for i in range( i, i + posab ):
         autor += '\n' + phrase[i]
 
-
     return autor
+"""
 
+def getAutor( txt ) :
+    return "Jean Paul"
 
 if( len(sys.argv) <= 2 ):
     wrongUsage()
