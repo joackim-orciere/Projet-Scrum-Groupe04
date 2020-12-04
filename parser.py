@@ -25,29 +25,29 @@ def getTitle( txt ):
 
 
     phrase=txt.split("\n")
-    
+
     # title = str(phrase[0:2])
     title = phrase[0] + '\n' + phrase[1]
-    
+
     return title
-   
+
 def getAutor( txt ):
-    
+
     phrase=txt.split("\n")
     posab=4
-    
+
     for j in range(0, 50):
         if('Abstract' in phrase[j] or 'ABSTRACT' in phrase[j]):
-            
+
             posab=j
-    
+
     # autor = str(phrase[2:posab])
     autor = phrase[2]
     i = 2
     for i in range( i, i + posab ):
         autor += '\n' + phrase[i]
 
-    
+
     return autor
 
 
@@ -184,8 +184,8 @@ for pdf_file in selectedFiles :
 
     else:
         file.write(filename + '\n\n')
-        file.write(getTitle(string) + '\n\n')
-        file.write(getAutor(string) + '\n\n')
+        file.write('-TITLE-\n\n' + getTitle(string) + '\n\n')
+        file.write('-AUTOR-\n\n' + getAutor(string) + '\n\n')
         file.write('-ABSTRACT-\n\n' + getAbstract(string) + '\n\n')
         file.write('-INTRODUCTION-\n\n' + getIntroduction(string) + '\n\n')
         file.write('-CORPS-\n\n' + getCorps(string) + '\n\n')
