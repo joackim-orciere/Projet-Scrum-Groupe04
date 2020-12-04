@@ -43,7 +43,7 @@ def getTitle(text):
 
     return title
 
-
+# For tests purposes
 a = "Karagiannis & Reimer (Eds.): Practical Aspects of Knowledge Management.\n\
 c\n\
 LNAI 2569, pp. 168-178, ISBN 3-540-00314-2, Springer\n\
@@ -52,6 +52,6 @@ LNAI 2569, pp. 168-178, ISBN 3-540-00314-2, Springer\n\
 Analysis of Clustering Algorithms for Web-based Search\n\
 Sven Meyer zu Eissen and Benno Stein"
 
-print(findTitleStartLine( a )) 
-print(findTitleEndLine( a ))
-print(getTitle( a ))
+#   print(findTitleStartLine( a )) 
+#   print(findTitleEndLine( a ))
+#   print(getTitle( a ))
