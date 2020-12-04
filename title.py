@@ -2,7 +2,7 @@
 import re
 
 def isTitleLineCorrect(line):
-    specials = bool(re.search( ':|\(|\)|\.|\[|\]\*', line ))
+    specials = bool(re.search( ':|\(|\)|\[|\]\*', line ))
     length = len(line)
 
     return not( specials or ( length < 24 ))
@@ -20,7 +20,6 @@ def findTitleStartLine(text):
 
     return -1
 
-    return 
 
 def findTitleEndLine(text):
     s = findTitleStartLine( text )
