@@ -186,7 +186,7 @@ for pdf_file in selectedFiles :
     else:
         file.write(filename + '\n\n')
         file.write('-TITLE-\n\n' + getTitle(string) + '\n\n')
-        file.write('-AUTOR-\n\n' + getTitleV2(string) + '\n\n')
+        file.write('-AUTOR-\n\n' + getAuthorV2(string) + '\n\n')
         file.write('-ABSTRACT-\n\n' + getAbstract(string) + '\n\n')
         file.write('-INTRODUCTION-\n\n' + getIntroduction(string) + '\n\n')
         file.write('-CORPS-\n\n' + getCorps(string) + '\n\n')

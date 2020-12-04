@@ -6,10 +6,11 @@ import os
 import re
 from title import *
 
-def getTitleV2(text):
+def getAuthorV2(text):
     a=''
     line=text.split('\n')
     idEndTitle=findTitleEndLine(text)
+    print()
     a+=line[idEndTitle+1]
     a+=" "
     position=idEndTitle+2
@@ -22,5 +23,5 @@ def getTitleV2(text):
 
 
 
-    print(a)
-    return ''
+
+    return a
