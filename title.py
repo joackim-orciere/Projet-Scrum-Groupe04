@@ -1,12 +1,25 @@
 #!/bin/python
 import re
 
+def isSuspicious(line):
+
+    cpt = 0
+
+    for i in range( 0, len(line) ):
+        l = line[i]
+        cpt += bool(re.search( '[0-9]|,|-|\.', l ))
+    if( cpt > 10 ):
+        return True
+    return False
+
+
+
 def isTitleLineCorrect(line):
     specials = bool(re.search( '\(|\)|\[|\]\*', line ))
     length = len(line)
     words = len( line.split() )
 
-    return not( specials or ( length < 16 ) or words > 10)
+    return not( specials or ( length < 16 ) or words > 10 or isSuspicious(line))
 
 
 def findTitleStartLine(text):
