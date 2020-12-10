@@ -20,37 +20,6 @@ def wrongUsage():
     print("options: \n\t-t \t# plain text output\n\t-x \t# xml output")
     exit()
 
-"""
-def getTitle( txt ):
-
-    phrase=txt.split("\n")
-
-    # title = str(phrase[0:2])
-    title = phrase[0] + '\n' + phrase[1]
-
-    return title
-
-def getAutor( txt ):
-
-    phrase=txt.split("\n")
-    posab=4
-
-    for j in range(0, 50):
-        if('Abstract' in phrase[j] or 'ABSTRACT' in phrase[j]):
-
-            posab=j
-
-    # autor = str(phrase[2:posab])
-    autor = phrase[2]
-    i = 2
-    for i in range( i, i + posab ):
-        autor += '\n' + phrase[i]
-
-    return autor
-"""
-
-def getAutor( txt ) :
-    return "Jean Paul"
 
 if( len(sys.argv) <= 2 ):
     wrongUsage()
@@ -154,7 +123,7 @@ for pdf_file in selectedFiles :
         file.write('\t</titre>\n')
 
         file.write('\t<auteur>')
-        file.write(getAutor(string))    # not done yet
+        file.write(getAuthorV2(string))    # not done yet
         file.write('\t</auteur>\n')
 
         file.write('\t<abstract>')
